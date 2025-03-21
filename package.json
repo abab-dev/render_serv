@@ -1,0 +1,18 @@
+{
+  "scripts": {
+    "start": "tsx src/index.ts "
+  },
+  "dependencies": {
+    "@colyseus/command": "^0.3.1",
+    "@colyseus/monitor": "^0.15.8",
+    "@colyseus/tools": "^0.15.49",
+    "@types/express": "^5.0.0",
+    "colyseus": "^0.15.57",
+    "cors": "^2.8.5",
+    "express": "^4.21.2"
+  },
+  "devDependencies": {
+    "@types/cors": "^2.8.17",
+    "tsx": "^4.19.2"
+  }
+}
