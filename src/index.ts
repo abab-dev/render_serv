@@ -9,9 +9,22 @@ import { monitor } from '@colyseus/monitor'
 import { MyOffice} from './rooms/MyOffice'
 
 const port = Number(process.env.PORT || 2567)
-const app = express()
+const allowedOrigins = ["https://vercelfe-3lmwlcdsv-dev-abhs-projects.vercel.app"]
 
-app.use(cors());
+const app = express();
+
+//  Secure CORS
+app.use(cors({
+  origin: (origin, callback) => {
+    if (!origin || allowedOrigins.includes(origin)) {
+      callback(null, true);
+    } else {
+      callback(new Error("Not allowed by CORS"));
+    }
+  },
+  // credentials: true
+}));
+
 app.use(express.json())
 // app.use(express.static('dist'))
 
