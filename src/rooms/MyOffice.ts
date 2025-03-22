@@ -6,13 +6,13 @@ import PlayerUpdateCommand from '../rooms/commands/PlayerUpdateCommand'
 
 export class MyOffice extends Room<OfficeState> {
   private dispatcher = new Dispatcher(this)
-    onAuth(client, options, request) {
-    const origin = request.headers.origin;
-    if (!allowedOrigins.includes(origin)) {
-      console.log(`Blocked WebSocket connection from ${origin}`);
-      return false; // Reject connection
-    }
-    return true;
+    // onAuth(client, options, request) {
+    // const origin = request.headers.origin;
+    // if (!allowedOrigins.includes(origin)) {
+    //   console.log(`Blocked WebSocket connection from ${origin}`);
+    //   return false; // Reject connection
+    // }
+    // return true;
   }
 
   onCreate(options: any) {
