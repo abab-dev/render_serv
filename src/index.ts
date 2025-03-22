@@ -11,10 +11,20 @@ import { MyOffice} from './rooms/MyOffice'
 const port = Number(process.env.PORT || 2567)
 // const allowedOrigins = ["https://vercelfe-3lmwlcdsv-dev-abhs-projects.vercel.app"]
 
-const app = express();
+
+const app = express()
+
+app.use(cors());
+app.use(express.json())
+// app.use(express.static('dist'))
+
+const server = http.createServer(app)
+const gameServer = new Server({
+  server,
+})
 
 //  Secure CORS
-app.use(cors({
+// app.use(cors({
   // origin: (origin, callback) => {
   //   if (!origin || allowedOrigins.includes(origin)) {
   //     callback(null, true);
@@ -23,15 +33,8 @@ app.use(cors({
   //   }
   // },
   // credentials: true
-}));
+// }));
 
-app.use(express.json())
-// app.use(express.static('dist'))
-
-const server = http.createServer(app)
-const gameServer = new Server({
-  server,
-})
 
 // register your room handlers
 gameServer.define('myoffice', MyOffice)
@@ -45,7 +48,7 @@ gameServer.define('myoffice', MyOffice)
 // app.use("/", socialRoutes);
 
 // register colyseus monitor AFTER registering your room handlers
-app.use('/colyseus', monitor())
+// app.use('/colyseus', monitor())
 
 gameServer.listen(port)
 console.log(`Listening on ws://localhost:${port}`)
